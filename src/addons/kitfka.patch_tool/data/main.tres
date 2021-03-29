@@ -1,0 +1,25 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/kitfka.patch_tool/tools/patch_stamp.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+data = {
+"res://.gitignore": {
+"current_file_hash": "ee2853bdb1ce7efaf4ad1e7dabb0e0b7",
+"updated_file": true
+},
+"res://Startup.gd": {
+"current_file_hash": "7f19ac343c97a39c9f906e8b3c11d834",
+"updated_file": true
+},
+"res://Startup.tscn": {
+"current_file_hash": "913c78a8fb9a3bb75fe3fb22ae5022fd",
+"updated_file": true
+},
+"res://project.godot": {
+"current_file_hash": "b690d3e68ac3f2cd5047c43f0542a1e7",
+"updated_file": true
+}
+}
+patchHistory = [  ]

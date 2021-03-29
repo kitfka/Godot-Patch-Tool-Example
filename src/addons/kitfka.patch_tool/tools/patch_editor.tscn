@@ -1,0 +1,147 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://addons/kitfka.patch_tool/tools/patch_editor.gd" type="Script" id=3]
+[ext_resource path="res://addons/kitfka.patch_tool/tools/pack_tool.gd" type="Script" id=4]
+[ext_resource path="res://addons/kitfka.patch_tool/data/main.tres" type="Resource" id=5]
+
+[node name="PatchEditor" type="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_vertical = 3
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="MenuBar" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 1016.0
+margin_bottom = 20.0
+
+[node name="FileMenu" type="MenuButton" parent="VBoxContainer/MenuBar"]
+visible = false
+margin_right = 35.0
+margin_bottom = 20.0
+toggle_mode = false
+text = "File"
+
+[node name="EditMenu" type="MenuButton" parent="VBoxContainer/MenuBar"]
+margin_right = 36.0
+margin_bottom = 20.0
+toggle_mode = false
+text = "Edit"
+
+[node name="Main" type="HSplitContainer" parent="VBoxContainer"]
+margin_top = 24.0
+margin_right = 1016.0
+margin_bottom = 574.0
+size_flags_vertical = 3
+split_offset = 100
+
+[node name="LeftPane" type="VBoxContainer" parent="VBoxContainer/Main"]
+margin_right = 190.0
+margin_bottom = 550.0
+
+[node name="StringList" type="ItemList" parent="VBoxContainer/Main/LeftPane"]
+margin_right = 190.0
+margin_bottom = 480.0
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/Main/LeftPane"]
+margin_top = 484.0
+margin_right = 190.0
+margin_bottom = 498.0
+text = "Patch Name:"
+
+[node name="Search" type="HBoxContainer" parent="VBoxContainer/Main/LeftPane"]
+margin_top = 502.0
+margin_right = 190.0
+margin_bottom = 526.0
+
+[node name="FileName" type="LineEdit" parent="VBoxContainer/Main/LeftPane/Search"]
+margin_right = 190.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "patch_0"
+
+[node name="ClearSearch" type="Button" parent="VBoxContainer/Main/LeftPane/Search"]
+visible = false
+margin_left = 254.0
+margin_right = 273.0
+margin_bottom = 24.0
+text = "x"
+
+[node name="StringListActions" type="HBoxContainer" parent="VBoxContainer/Main/LeftPane"]
+margin_top = 530.0
+margin_right = 190.0
+margin_bottom = 550.0
+
+[node name="ScanButton" type="Button" parent="VBoxContainer/Main/LeftPane/StringListActions"]
+margin_right = 41.0
+margin_bottom = 20.0
+text = "Scan"
+
+[node name="BuildButton" type="Button" parent="VBoxContainer/Main/LeftPane/StringListActions"]
+margin_left = 45.0
+margin_right = 90.0
+margin_bottom = 20.0
+disabled = true
+text = "Build"
+
+[node name="RightPane" type="VBoxContainer" parent="VBoxContainer/Main"]
+margin_left = 202.0
+margin_right = 1016.0
+margin_bottom = 550.0
+
+[node name="VSplitContainer" type="VSplitContainer" parent="VBoxContainer/Main/RightPane"]
+margin_right = 814.0
+margin_bottom = 550.0
+size_flags_vertical = 3
+split_offset = 250
+
+[node name="FileChangeList" type="ItemList" parent="VBoxContainer/Main/RightPane/VSplitContainer"]
+margin_right = 814.0
+margin_bottom = 550.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Main/RightPane/VSplitContainer"]
+visible = false
+margin_top = 298.0
+margin_right = 813.0
+margin_bottom = 574.0
+
+[node name="Label" type="Label" parent="VBoxContainer/Main/RightPane/VSplitContainer/VBoxContainer"]
+margin_right = 813.0
+margin_bottom = 14.0
+text = "Notes"
+
+[node name="NotesEdit" type="TextEdit" parent="VBoxContainer/Main/RightPane/VSplitContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 813.0
+margin_bottom = 276.0
+mouse_default_cursor_shape = 0
+size_flags_vertical = 3
+
+[node name="StatusBar" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 578.0
+margin_right = 1016.0
+margin_bottom = 592.0
+
+[node name="Label" type="Label" parent="VBoxContainer/StatusBar"]
+margin_right = 39.0
+margin_bottom = 14.0
+text = "Status"
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource( 4 )
+data = ExtResource( 5 )
+[connection signal="text_changed" from="VBoxContainer/Main/LeftPane/Search/FileName" to="." method="_on_FileName_text_changed"]
+[connection signal="pressed" from="VBoxContainer/Main/LeftPane/Search/ClearSearch" to="." method="_on_ClearSearch_pressed"]
+[connection signal="pressed" from="VBoxContainer/Main/LeftPane/StringListActions/ScanButton" to="." method="_on_ScanButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/Main/LeftPane/StringListActions/BuildButton" to="." method="_on_BuildButton_pressed"]
