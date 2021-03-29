@@ -20,4 +20,8 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Godot Patch Tool"
+config/name="Godot Patch Tool Example"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "kitfka.patch_tool" )

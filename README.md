@@ -1,5 +1,4 @@
-Patch builder for Godot Engine
+Patch builder Example
 =====================================
 
-This tool is able to make automate patch generation. However, there is stull a lot to do.
-Works with godot3.2.3
+This is the example for [this Addon](https://github.com/kitfka/Godot-Patch-Tool)
